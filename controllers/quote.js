@@ -1,4 +1,4 @@
-const axios = require('axios');
+const axios = require('../utils/axios-exchangeratesapi');
 const asyncHandler = require('../middleware/async');
 const ErrorResponse = require('../utils/errorResponse');
 const Quote = require('../models/QuoteQueryParams');
@@ -12,7 +12,7 @@ exports.getQuote = asyncHandler(async (req, res, next) => {
     return next(new ErrorResponse(validation.error.message, 400));
   }
   const response = await axios.get(
-    `https://api.exchangeratesapi.io/latest?base=${req.query.base_currency}&symbols=${req.query.quote_currency}`
+    `/latest?base=${req.query.base_currency}&symbols=${req.query.quote_currency}`
   );
   res.status(200).json({
     exchange_rate: response.data.rates[req.query.quote_currency].toFixed(3),
