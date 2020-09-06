@@ -5,7 +5,8 @@
   "main": "server.js",
   "scripts": {
     "start": "set NODE_ENV=production && node server",
-    "dev": "nodemon server"
+    "dev": "nodemon server",
+    "test": "jest"
   },
   "author": "Domantas Lekavicius",
   "license": "MIT",
@@ -17,6 +18,7 @@
     "morgan": "^1.10.0"
   },
   "devDependencies": {
+    "jest": "^26.4.2",
     "nodemon": "^2.0.4"
   }
 }
