@@ -1,10 +1,12 @@
 const express = require('express');
 const dotenv = require('dotenv');
+const quote = require('./routes/quote');
 
-// load env vars
 dotenv.config({ path: './config/config.env' });
 
 const app = express();
+
+app.use('/api/v1/quote', quote);
 
 const PORT = process.env.PORT || 5000;
 
