@@ -1,4 +1,4 @@
-const axios = require('../utils/axios-exchangeratesapi');
+const axios = require('../utils/axiosExchangeratesapi');
 const asyncHandler = require('../middleware/async');
 const ErrorResponse = require('../utils/errorResponse');
 const Quote = require('../models/QuoteQueryParams');
