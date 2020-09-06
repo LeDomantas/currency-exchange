@@ -4,8 +4,8 @@
   "description": "Simplex backend dev home task",
   "main": "server.js",
   "scripts": {
-    "start": "env-cmd -f ./config/prod.env node server",
-    "dev": "env-cmd -f ./config/dev.env nodemon server",
+    "start": "env-cmd -f ./config/prod.env node index",
+    "dev": "env-cmd -f ./config/dev.env nodemon index",
     "test": "env-cmd -f ./config/test.env jest --watch"
   },
   "jest": {
