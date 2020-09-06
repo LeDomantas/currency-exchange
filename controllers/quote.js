@@ -4,7 +4,7 @@ const ErrorResponse = require('../utils/errorResponse');
 const Quote = require('../models/QuoteQueryParams');
 
 // @desc      Get quote
-// @route     GET /api/v1/quote
+// @route     GET /quote
 // @access    Public
 exports.getQuote = asyncHandler(async (req, res, next) => {
   const validation = Quote.validate(req.query);
