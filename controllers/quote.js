@@ -25,9 +25,7 @@ exports.getQuote = asyncHandler(async (req, res, next) => {
   res.status(200).json({
     exchange_rate: +response.data.rates[req.query.quote_currency].toFixed(3),
     quote_amount: Math.floor(
-      req.query.base_amount *
-        response.data.rates[req.query.quote_currency] *
-        100
+      req.query.base_amount * response.data.rates[req.query.quote_currency]
     ),
   });
 });
