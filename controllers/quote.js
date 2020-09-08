@@ -15,17 +15,20 @@ exports.getQuote = asyncHandler(async (req, res, next) => {
     return next(new ErrorResponse(validation.error.message, 400));
   }
   const key = req.query.base_currency + req.query.quote_currency;
-  let response = cache.get(key);
-  if (!response) {
-    response = await axios.get(
-      `/latest?base=${req.query.base_currency}&symbols=${req.query.quote_currency}`
-    );
-    cache.put(key, response);
+  let data = cache.get(key);
+  if (!data) {
+    data = (
+      await axios.get(
+        `/latest?base=${req.query.base_currency}&symbols=${req.query.quote_currency}`
+      )
+    ).data;
+    cache.put(key, data);
   }
+  console.log(data);
   res.status(200).json({
-    exchange_rate: +response.data.rates[req.query.quote_currency].toFixed(3),
+    exchange_rate: +data.rates[req.query.quote_currency].toFixed(3),
     quote_amount: Math.floor(
-      req.query.base_amount * response.data.rates[req.query.quote_currency]
+      req.query.base_amount * data.rates[req.query.quote_currency]
     ),
   });
 });
