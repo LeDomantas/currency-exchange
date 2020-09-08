@@ -4,5 +4,5 @@ const LOCALIZATION_KEYS = require('../utils/localizationKeys');
 // @route     GET /*
 // @access    Public
 exports.getAny = (req, res, next) => {
-  res.send({ error: LOCALIZATION_KEYS.UNKNOWN_REQUEST }, 404);
+  res.status(404).send({ error: LOCALIZATION_KEYS.UNKNOWN_REQUEST });
 };
