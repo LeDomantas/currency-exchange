@@ -24,7 +24,6 @@ exports.getQuote = asyncHandler(async (req, res, next) => {
     ).data;
     cache.put(key, data);
   }
-  console.log(data);
   res.status(200).json({
     exchange_rate: +data.rates[req.query.quote_currency].toFixed(3),
     quote_amount: Math.floor(
